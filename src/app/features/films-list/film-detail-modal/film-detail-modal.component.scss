@@ -72,13 +72,16 @@
 }
 
 @media (min-width: 768px) {
-    .film-image,
+    .film-image {
+        width: calc(45% - 1.5rem);
+    }
+
     .content {
-        width: calc((100% - 4rem) / 2);
+        width: calc(55% - 1.5rem);
     }
 
     .film-image {
-        margin-right: 4rem;
+        margin-right: 3rem;
     }
 
     .buttons-wrapper {

@@ -1,5 +1,5 @@
 import { HidePaginationDirective } from './../../shared/directives/hide-pagination.directive';
-import { map } from 'rxjs';
+import { map, tap, switchMap } from 'rxjs';
 import { FilmDetailModalComponent } from './../../features/films-list/film-detail-modal/film-detail-modal.component';
 import {
   Button,
@@ -10,7 +10,12 @@ import { FilmsListComponent } from 'src/app/features/films-list/films-list.compo
 import { Film } from 'src/app/shared/models/film.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from './../../header/header.component';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { LibraryResolverData } from './library.resolver';
 import { PaginationComponent } from 'src/app/shared/components/pagination/pagination.component';
 import { LibraryResolverKey } from './library-routing.module';
@@ -45,22 +50,30 @@ export class LibraryComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private libraryService: LibraryService
+    private libraryService: LibraryService,
+    private changeDetection: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.route.data.subscribe((data) => {
-      const { page, totalPages, collection }: LibraryResolverData =
-        data[LibraryResolverKey];
-      this.currentCollection = collection;
-      this.page = page;
-      this.totalPages = totalPages;
-    });
-
-    this.libraryService.library$
-      .pipe(map((library) => library[this.currentCollection]))
+    this.route.data
+      .pipe(
+        map((data) => {
+          const { page, totalPages, collection }: LibraryResolverData =
+            data[LibraryResolverKey];
+          this.currentCollection = collection;
+          this.page = page;
+          this.totalPages = totalPages;
+          return collection;
+        }),
+        switchMap((collection) => {
+          return this.libraryService.library$.pipe(
+            map((library) => library[collection])
+          );
+        })
+      )
       .subscribe((films) => {
-        this.films = films;
+        this.films = films.slice();
+        this.changeDetection.detectChanges()
       });
   }
 
@@ -80,6 +93,7 @@ export class LibraryComponent implements OnInit {
       queryParamsHandling: 'merge',
       queryParams,
     });
+    this.changeDetection.detectChanges();
   }
 
   getButtonTheme(collection: Libraries) {
