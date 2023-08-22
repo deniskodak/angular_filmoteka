@@ -1,0 +1,127 @@
+$header-mobile-height: 460px;
+$header-tablet-height: 222px;
+$header-desktop-height: 316px;
+
+.header {
+    height: $header-mobile-height;
+    background-repeat: no-repeat;
+    background-size: auto, cover, cover, cover;
+    background-position: 50% 90%, center;
+    background-color: #ffa027;
+    background-image: url("../../assets/images/header/logo_mobile.png"),
+        url("../../assets/images/header/header-mobile-orange.jpg"),
+        url("../../assets/images/header/header-mobile-red.jpg"),
+        url("../../assets/images/header/header-mobile-yellow.jpg");
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-duration: 35000ms;
+    animation-fill-mode: backwards;
+    animation-iteration-count: infinite;
+    animation-delay: 5000ms;
+    animation-name: moveBgImageMobile;
+
+    @media (min-width: 768px) {
+        height: $header-tablet-height;
+        background-size: 40%, contain, cover, cover;
+        background-position: 5% 90%, right, 4000% 0, 4000% 0;
+        background-image: url("../../assets/images/header/logo_desktop.png"),
+            url("../../assets/images/header/header-desktop-orange.jpg"),
+            url("../../assets/images/header/header-desktop-red.jpg"),
+            url("../../assets/images/header/header-desktop-yellow.jpg");
+        animation-name: moveBgImageTablet;
+    }
+
+    @media (min-width: 1280px) {
+        height: $header-desktop-height;
+        animation-name: moveBgImageDesktop;
+    }
+}
+
+@keyframes moveBgImageMobile {
+    0% {
+        background-position: 50% 85%, right 0, 0 (-$header-mobile-height), 0 (-$header-mobile-height);
+    }
+
+    18% {
+        background-position: 50% 85%, right $header-mobile-height, 0 0, 0 (-$header-mobile-height);
+    }
+
+    36% {
+        background-position: 50% 85%, right $header-mobile-height, 0 0, 0 (-$header-mobile-height);
+    }
+
+    54% {
+        background-position: 50% 85%, right $header-mobile-height, 0 $header-mobile-height, 0 0;
+    }
+
+    72% {
+        background-position: 50% 85%, right $header-mobile-height, 0 $header-mobile-height, 0 0;
+    }
+
+    90% {
+        background-position: 50% 85%, right 0, 0 $header-mobile-height, 0 (-$header-mobile-height);
+    }
+
+    100% {
+        background-position: 50% 85%, right 0, 0 $header-mobile-height, 0 (-$header-mobile-height);
+    }
+}
+
+@keyframes moveBgImageTablet {
+    0% {
+        background-position: 5% 90%, right 0, 0 (-$header-tablet-height), 0 (-$header-tablet-height);
+    }
+
+    18% {
+        background-position: 5% 90%, right $header-tablet-height, 0 0, 0 (-$header-tablet-height);
+    }
+
+    36% {
+        background-position: 5% 90%, right $header-tablet-height, 0 0, 0 (-$header-tablet-height);
+    }
+
+    54% {
+        background-position: 5% 90%, right $header-tablet-height, 0 $header-tablet-height, 0 0;
+    }
+
+    72% {
+        background-position: 5% 90%, right $header-tablet-height, 0 $header-tablet-height, 0 0;
+    }
+
+    90% {
+        background-position: 5% 90%, right 0, 0 $header-tablet-height, 0 (-$header-tablet-height);
+    }
+
+    100% {
+        background-position: 5% 90%, right 0, 0 $header-tablet-height, 0 (-$header-tablet-height);
+    }
+}
+
+@keyframes moveBgImageDesktop {
+    0% {
+        background-position: 5% 90%, right 0, 0 (-$header-desktop-height), 0 (-$header-desktop-height);
+    }
+
+    18% {
+        background-position: 5% 90%, right $header-desktop-height, 0 0, 0 (-$header-desktop-height);
+    }
+
+    36% {
+        background-position: 5% 90%, right $header-desktop-height, 0 0, 0 (-$header-desktop-height);
+    }
+
+    54% {
+        background-position: 5% 90%, right $header-desktop-height, 0 $header-desktop-height, 0 0;
+    }
+
+    72% {
+        background-position: 5% 90%, right $header-desktop-height, 0 $header-desktop-height, 0 0;
+    }
+
+    90% {
+        background-position: 5% 90%, right 0, 0 $header-desktop-height, 0 (-$header-desktop-height);
+    }
+
+    100% {
+        background-position: 5% 90%, right 0, 0 $header-desktop-height, 0 (-$header-desktop-height);
+    }
+}

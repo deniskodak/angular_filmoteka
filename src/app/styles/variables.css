@@ -1,0 +1,12 @@
+:root {
+  --primary-color: #000000;
+  --red-color: #b92f2c;
+  --gray-color: #8c8c8c;
+  --light-color: #fff;
+  --light-gray-color: #F7F7F7;
+  
+
+  --button-dark-color: var(--primary-color);
+  --button-light-color: var(--light-color);
+  --button-accent-color: var(--red-color);
+}

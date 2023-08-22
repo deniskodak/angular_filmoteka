@@ -1,0 +1,73 @@
+.button {
+    padding: 12px 24px;
+    outline: none;
+    border: none;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.4s ease-in-out;
+    background-size: 300% 100%;
+    
+    &:hover,
+    &:focus {
+        background-position: 100% 0;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &.light {
+        color: var(--primary-color);
+        background-color: var(--button-light-color);
+        background-image: linear-gradient(
+            to right,
+            var(--button-light-color),
+            var(--button-light-color),
+            rgb(230, 220, 220),
+            var(--button-light-color)
+        );
+        box-shadow: 0 5px 15px rgba(var(--button-light-color), 0.4);
+    }
+
+    &.light.accent {
+        color: var(--red-color);
+        background-image: linear-gradient(
+            to right,
+            var(--button-light-color),
+            var(--button-light-color),
+            var(--red-color),
+            var(--button-light-color)
+        );
+        box-shadow: 0 5px 15px rgba(var(--button-light-color), 0.4);
+
+        &:hover,
+        &:focus {
+            color: var(--light-color);
+        }
+    }
+
+    &.dark {
+        color: var(--light-color);
+        background-image: linear-gradient(
+            to right,
+            var(--button-dark-color),
+            rgb(65 63 63),
+            rgb(122 122 122),
+            var(--button-dark-color)
+        );
+        box-shadow: 0 5px 15px rgba(var(--button-dark-color), 0.4);
+    }
+
+    &.accent {
+        color: var(--light-color);
+        background-image: linear-gradient(
+            to right,
+            var(--button-accent-color),
+            #f15e64,
+            #e14e53,
+            var(--button-accent-color)
+        );
+        box-shadow: 0 5px 15px rgba(var(--button-accent-color), 0.4);
+    }
+}

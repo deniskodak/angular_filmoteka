@@ -1,0 +1,17 @@
+<div class="film-card" (click)="onFilmClick()">
+  <img
+    [src]="baseImgUrl + 'w342' + film.poster_path"
+    class="img-responsive image"
+    loading="lazy"
+    height="500"
+    width="400"
+  />
+  <div class="film-info">
+    <h4>{{ film.title | uppercase }}</h4>
+    <p>
+      {{ film.genre_ids | genre : 2 | uppercase }}
+      |
+      <span>{{ film.release_date | date : "YYYY" }}</span>
+    </p>
+  </div>
+</div>

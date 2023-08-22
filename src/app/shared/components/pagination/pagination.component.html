@@ -1,0 +1,31 @@
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li>
+      <a
+        class="arrow"
+        [ngClass]="{ disabled: page === 1 }"
+        (click)="onClick(page - 1)"
+        aria-label="Previous"
+      >
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li
+      *ngFor="let item of generatePages(); let i = index"
+      [ngClass]="{ active: item === page }"
+      (click)="onClick(item)"
+    >
+      <a>{{ item }}</a>
+    </li>
+    <li>
+      <a
+        class="arrow"
+        (click)="onClick(page + 1)"
+        [ngClass]="{ disabled: page === totalPages }"
+        aria-label="Next"
+      >
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

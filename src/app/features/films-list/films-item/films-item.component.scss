@@ -1,0 +1,31 @@
+.film-card {
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+
+    h4,
+    p {
+        font-size: 20px;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    p {
+        color: var(--red-color);
+        margin-top: 0.5rem;
+    }
+
+    .film-info {
+        padding: 0.5rem;
+    }
+}
+
+.image {
+    width: 100%;
+    margin-bottom: 12px;
+}
