@@ -14,11 +14,12 @@
     <div class="header-buttons">
       <app-button
         title="Home"
-        [buttonTheme]="buttonThemes.Dark"
+        [buttonTheme]="isHome ? buttonThemes.Dark : buttonThemes.Light"
         (onClick)="onButtonClick('/home')"
       ></app-button>
       <app-button
         title="My Library"
+        [buttonTheme]="isHome ? buttonThemes.Light : buttonThemes.Dark"
         (onClick)="onButtonClick('/library')"
       ></app-button>
     </div>

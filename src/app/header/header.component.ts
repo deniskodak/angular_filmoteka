@@ -5,7 +5,6 @@ import {
 } from './../shared/components/button/button.component';
 import {
   Component,
-  OnInit,
   EventEmitter,
   Output,
   Input,
@@ -26,15 +25,14 @@ import { DebounceDirective } from '../shared/directives/debounce.directive';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   buttonThemes = ButtonThemes;
   @Input() isSearchShown: boolean = true;
   search: string = '';
   @Output() onSearch = new EventEmitter();
+  @Input() isHome = true;
 
   constructor(private router: Router) {}
-
-  ngOnInit() {}
 
   onSearchChanged() {
     this.onSearch.emit(this.search);
