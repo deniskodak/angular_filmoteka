@@ -10,6 +10,7 @@ import {
   Output,
   Input,
   ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 
 import { NgIf } from '@angular/common';
@@ -22,6 +23,7 @@ import { DebounceDirective } from '../shared/directives/debounce.directive';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss', './header-animation.component.scss'],
   imports: [Button, NgIf, FormsModule, DebounceDirective, RouterModule],
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
