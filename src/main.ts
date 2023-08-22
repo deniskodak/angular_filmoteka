@@ -1,7 +1,15 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppRoutingModule } from './app/app-routing.module';
+import { importProvidersFrom } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppComponent } from './app/app.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FilmsInterceptor } from './app/features/films-list/films.interceptor';
 
-import { AppModule } from './app/app.module';
-
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(BrowserAnimationsModule),
+    importProvidersFrom(AppRoutingModule),
+    { provide: HTTP_INTERCEPTORS, useClass: FilmsInterceptor, multi: true },
+  ],
+});

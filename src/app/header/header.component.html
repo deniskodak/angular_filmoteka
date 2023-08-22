@@ -1,0 +1,27 @@
+<div class="header">
+  <div class="header-actions">
+    <input
+      *ngIf="isSearchShown"
+      [(ngModel)]="search"
+      (onDebounce)="onSearch.emit($event)"
+      class="input"
+      type="text"
+      name="search"
+      id="search"
+      autocomplete="off"
+      placeholder="Movie search"
+    />
+    <div class="header-buttons">
+      <app-button
+        title="Home"
+        [buttonTheme]="buttonThemes.Dark"
+        (onClick)="onButtonClick('/home')"
+      ></app-button>
+      <app-button
+        title="My Library"
+        (onClick)="onButtonClick('/library')"
+      ></app-button>
+    </div>
+  </div>
+  <div class="suffix-wrapper"><ng-content></ng-content></div>
+</div>

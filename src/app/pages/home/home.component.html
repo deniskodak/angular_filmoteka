@@ -1,0 +1,15 @@
+<div>
+  <app-header (onSearch)="onSearch($event)"> </app-header>
+  <div class="films-wrapper">
+    <app-films-list [films]="films"></app-films-list>
+  </div>
+  <div class="pagination-wrapper">
+    <app-pagination
+      *hide-pagination="{totalPages, filmsAmount: films.length}"
+      [page]="page"
+      [totalPages]="totalPages"
+      (onPageChange)="onPaginate($event)"
+    ></app-pagination>
+  </div>
+  <app-film-detail-modal></app-film-detail-modal>
+</div>

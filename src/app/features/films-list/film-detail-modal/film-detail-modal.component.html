@@ -1,0 +1,62 @@
+<app-modal [shown]="!!film" (onClose)="onCloseModal()">
+  <div class="content-wrapper" *ngIf="!!film">
+    <img
+      class="film-image img-responsive"
+      height="357"
+      width="240"
+      [poster-src]="film.poster_path"
+    />
+    <div class="content">
+      <h4 class="film-title">{{ film.title | uppercase }}</h4>
+      <div class="list-wrapper">
+        <ul class="film-info-titles">
+          <li
+            *ngFor="
+              let title of [
+                'Vote / Votes',
+                'Popularity',
+                'Original Title',
+                'Genre'
+              ]
+            "
+            class="film-info-title"
+          >
+            {{ title }}
+          </li>
+        </ul>
+        <ul class="film-info-values">
+          <li class="film-info-value">
+            <span class="vote-average">{{ film.vote_average }}</span>
+            <span class="vote-divider"> / </span>
+            {{ film.vote_count }}
+          </li>
+          <li class="film-info-value">
+            {{ film.popularity }}
+          </li>
+          <li class="film-info-value">
+            {{ film.original_title }}
+          </li>
+          <li class="film-info-value">
+            {{ film.genre_ids | genre }}
+          </li>
+        </ul>
+      </div>
+      <strong class="about-subtitle">ABOUT</strong>
+      <p class="about-content">{{ film.overview }}</p>
+      <div class="buttons-wrapper">
+        <div class="button">
+          <app-button
+            [title]="isWatched ? 'remove from watched' : 'add to watched'"
+            (onClick)="onLibraryButtonClick(librariesTypes.Watched)"
+            [buttonTheme]="buttonThemes.Accent"
+          ></app-button>
+        </div>
+        <app-button
+          [title]="isQueued ? 'remove from queue' : 'add to queue'"
+          (onClick)="onLibraryButtonClick(librariesTypes.Queued)"
+          [buttonTheme]="buttonThemes.LightAccent"
+        ></app-button>
+      </div>
+    </div>
+  </div>
+</app-modal>
